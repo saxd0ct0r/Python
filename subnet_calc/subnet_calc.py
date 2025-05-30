@@ -49,8 +49,8 @@ while True:
     subnet = cidr_to_subnet(cidr)
     print(f"{subnet} for CIDR of /{cidr}")
 
-# # print all subnet masks
-# for i in range(31):
-#     print(f"{cidr_to_subnet(i)} for CIDR of /{i}")
+# print all subnet masks
+for i in range(31):
+    print(f"{cidr_to_subnet(i)} for CIDR of /{i}")
 
    
