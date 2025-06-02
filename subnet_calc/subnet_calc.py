@@ -21,6 +21,14 @@ def cidr_to_subnet(cidr_code):
 
 # Prompt user to enter a valid CIDR code (0 - 30) or exit (-1)
 
+def get_ip_address():
+    while True:
+        user_response = input("Enter IP/CIDR (X to exit): ")
+        if user_response.lower() == "x":
+            return -1
+        
+        
+
 def get_cidr():
     while True:
         user_response = input("Enter CIDR code (X to exit): ")
@@ -53,4 +61,4 @@ while True:
 for i in range(31):
     print(f"{cidr_to_subnet(i)} for CIDR of /{i}")
 
-   
+
