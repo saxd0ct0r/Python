@@ -27,7 +27,8 @@ def get_ip_address():
         if user_response.lower() == "x":
             return -1
         
-        
+    ip_address = user_response.split(".")
+    
 
 def get_cidr():
     while True:
