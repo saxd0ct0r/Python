@@ -1,7 +1,8 @@
 # Timothy Owen
 # 2 June 2025
 # Encapsulated function to get and validate structure of an IP address with CIDR,
-# returns a list with four octets and CIDR code as ints, Ex. [192, 168, 30, 10, 24]
+# returns a tuple with the IP address as a list of 4 octets, and the CIDR.
+# Ex. ([192, 168, 0, 10], 24). Invalid entries return -1 as an error
 
 def get_ip_address():
 
