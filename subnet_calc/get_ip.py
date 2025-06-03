@@ -7,13 +7,13 @@ def get_ip_address():
 
     user_response = input("Enter IP/CIDR (X to exit): ")
     if user_response.lower() == "x":
-        return -1
+        return 0
     
     ip_address = user_response.split(".")
+    cidr = user_response.split("/")[1]
+
     if len(ip_address) == 4:
-        temp = ip_address[3].split("/")
-        ip_address[3] = temp[0]
-        cidr = temp[1]
+        ip_address[3] = ip_address[3].split("/")[0]
         print(ip_address, cidr)
     else:
         print("Error")
@@ -27,10 +27,17 @@ def get_ip_address():
                 ip_address[index] = octet
                 index += 1
             else:
-                return -1
+                raise ValueError("Invalid entry. IP address octets must be integers"
+                                "from 0 to 255")
         except:
-            print("Invalid entry. IP address should be in form of ###.###.###.###/CIDR")
             return -1
+        
+    try:
+        cidr = int(cidr)
+        if cidr < 0 or cidr > 30:
+            raise ValueError("Invalid entry. CIDR must be an integer from 0 to 30")
+    except:
+        return -1
         
     return ip_address, cidr
         
