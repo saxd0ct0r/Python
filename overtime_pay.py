@@ -1,6 +1,8 @@
 # Timothy Owen
 # 2 June 2025
-# Encapsulates overtime pay calculation in a function
+'''
+Encapsulates overtime pay calculation in a function
+'''
 
 def computepay(hours, rate):
     ot_multiplyer = 1.5
@@ -15,8 +17,8 @@ def computepay(hours, rate):
     return pay
 
 for name in ("James", "Judy" , "John"):
-    hrs=float(input(f'{name}, please enter your weekly hours? '))
-    rt=float(input('and your Pay Rate? '))
+    hrs = float(input(f'{name}, please enter your weekly hours? '))
+    rt = float(input('and your Pay Rate? '))
     print("Hours Entered: ", hrs)
     print("Rate Entered: ", rt)
     print(f"{name} receives ${computepay(hrs, rt):.2f}")

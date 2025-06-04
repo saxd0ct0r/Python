@@ -1,10 +1,12 @@
 # Timothy Owen
 # 29 May 2025
-# Given a starting tempo, this algorithm guides the user through a sequence
-# of slower tempos to reinforce the learning of fingering patterns and musical
-# passages. Based loosely on the principle of the binary search, it rapidly
-# converges on the tempo at which the user is able to perform with good
-# technique in O = log(n) time.
+'''
+Given a starting tempo, this algorithm guides the user through a sequence
+of slower tempos to reinforce the learning of fingering patterns and musical
+passages. Based loosely on the principle of the binary search, it rapidly
+converges on the tempo at which the user is able to perform with good
+technique in O = log(n) time.
+'''
 
 # returns the index of the tuple element closest numerically to the target
 def find_nearest_index(tup, target):

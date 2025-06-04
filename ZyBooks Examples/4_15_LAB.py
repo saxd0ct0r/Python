@@ -1,6 +1,9 @@
 # Timothy Owen
 # 30 May 2025
-# ZyLab Exercise
+'''ZyLab Exercise 4.15.1: LAB: Smallest number
+Write a program whose inputs are three integers, and whose output is the
+smallest of the three values.
+'''
 
 user_nums = []
 
