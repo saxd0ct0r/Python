@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load humanize %}
 <h1>Products</h1>
 <!--
 <style>
@@ -34,7 +35,7 @@
         <img class="card-img-top" src="{{ product.image_url }}" alt="Card image cap" Style="width:400px;height:400px;">
         <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">${{ product.price }}</p>
+            <p class="card-text">${{ product.price|floatformat:2|intcomma }}</p>
             <a href="#" class="btn btn-primary">Add to Cart</a>
         </div>
     </div>
