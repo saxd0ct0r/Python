@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Update member</h1>
+
+<form action="updaterecord/{{ mycustomer.id }}" method="post">
+{% csrf_token %}
+First Name:<br>
+<input name="first" value="{{ mycustomer.fname }}">
+<br><br>
+Last Name:<br>
+<input name="last" value="{{ mycustomer.lname }}">
+<br><br>
+Middle Initial:<br>
+<input name="middle" value="{{ mycustomer.mi }}">
+<br><br>
+Email:<br>
+<input name="email" value="{{ mycustomer.email }}">
+<br><br>
+Phone:<br>
+<input name="phone" value="{{ mycustomer.phone }}">
+<br><br>
+Avatar URL:<br>
+<input name="avatar" value="{{ mycustomer.avatar_url }}">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
