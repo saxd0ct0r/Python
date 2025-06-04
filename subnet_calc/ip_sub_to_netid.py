@@ -71,7 +71,7 @@ def ip_to_netID(ip_list, cidr_code):
 def octet_list_to_ip_str(octets):
     return f"{octets[0]}.{octets[1]}.{octets[2]}.{octets[3]}"
 
-def display_ip_info(ip_string):
+def display_ip_info(ip_string):     
     ip_address, cidr = str_to_ip_address(ip_string)
 
     subnet = cidr_to_subnet(cidr)
@@ -99,7 +99,9 @@ def display_ip_info(ip_string):
 
     return
 
-# my_ip = "192.168.40.39/26" # for testing purposes
+# Endless loop as main function, takes the IP/CIDR or X/x to exit
+# If there is a problem with the entry, displays error message with
+# info about how to correct it.
 while True:
     try:
         my_ip = input("Enter an IP address with CIDR code in form of ###.###.###.###/## (X to exit):\n")
