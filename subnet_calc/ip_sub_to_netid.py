@@ -1,8 +1,13 @@
 # Timothy Owen
 # 3 June 2025
 '''
-Script to take string of IP/CIDR, parse it, calculate subnet, and filter
-Network ID.
+Script to take string of IP/CIDR and output the following:
+IP address, CIDR
+Subnet Mask
+Network ID
+1st Usable IP/Gateway
+Last Usable IP
+Broadcast IP
 '''
 null_ip = [0, 0, 0, 0]
 
