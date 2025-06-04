@@ -65,18 +65,14 @@ def ip_to_netID(ip_list, cidr_code):
 def octet_list_to_ip_str(octets):
     return f"{octets[0]}.{octets[1]}.{octets[2]}.{octets[3]}"
 
-my_ip = "10.47.182.99/27"
+my_ip = "192.168.40.39/26"
+
 ip_address, cidr = str_to_ip_address(my_ip)
-print(f"IP address: {ip_address}, CIDR: {cidr}")
-
-
 subnet = cidr_to_subnet(cidr)
-print(f"Subnet mask: {subnet}")
 network_ID = ip_to_netID(ip_address, cidr)
-print(f"Network ID: {network_ID[0]}.{network_ID[1]}.{network_ID[2]}.{network_ID[3]}")
+
 gateway = network_ID.copy()
 gateway[-1] += 1
-print(f"Gateway (1st usable): {gateway[0]}.{gateway[1]}.{gateway[2]}.{gateway[3]}")
 
 broadcast_mask = null_ip.copy()
 broadcast = null_ip.copy()
@@ -86,7 +82,13 @@ for i in range(len(broadcast_mask)):
 
 last_ip = broadcast.copy()
 last_ip[-1] -= 1
-print(f"Last usable: {last_ip[0]}.{last_ip[1]}.{last_ip[2]}.{last_ip[3]}")
-print(f"Broadcast: {broadcast[0]}.{broadcast[1]}.{broadcast[2]}.{broadcast[3]}")
+
+print(f"Input:\t\t\t{my_ip}")
+print(f"IP address:\t\t{octet_list_to_ip_str(ip_address)}\tCIDR: {cidr}")
+print(f"Subnet mask:\t\t{octet_list_to_ip_str(subnet)}")
+print(f"Network ID:\t\t{octet_list_to_ip_str(network_ID)}")
+print(f"Gateway (1st usable):\t{octet_list_to_ip_str(gateway)}")
+print(f"Last usable:\t\t{octet_list_to_ip_str(last_ip)}")
+print(f"Broadcast:\t\t{octet_list_to_ip_str(broadcast)}")
 
 
