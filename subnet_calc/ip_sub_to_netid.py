@@ -99,39 +99,14 @@ def display_ip_info(ip_string):
 
     return
 
-# my_ip = "192.168.40.39/26"
+# my_ip = "192.168.40.39/26" # for testing purposes
 while True:
     try:
         my_ip = input("Enter an IP address with CIDR code in form of ###.###.###.###/## (X to exit):\n")
         if my_ip.lower() == "x":
             break
-        # ip_address, cidr = str_to_ip_address(my_ip)
+
         display_ip_info(my_ip)
         print()
     except ValueError as e:
         print(e)
-
-# subnet = cidr_to_subnet(cidr)
-# network_ID = ip_to_netID(ip_address, cidr)
-
-# gateway = network_ID.copy()
-# gateway[-1] += 1
-
-# broadcast_mask = null_ip.copy()
-# broadcast = null_ip.copy()
-# for i in range(len(broadcast_mask)):
-#     broadcast_mask[i] = ~subnet[i] & 0xff
-#     broadcast[i] = network_ID[i] | broadcast_mask[i]
-
-# last_ip = broadcast.copy()
-# last_ip[-1] -= 1
-
-# print(f"Input:\t\t\t{my_ip}")
-# print(f"IP address:\t\t{octet_list_to_ip_str(ip_address)}\tCIDR: {cidr}")
-# print(f"Subnet mask:\t\t{octet_list_to_ip_str(subnet)}")
-# print(f"Network ID:\t\t{octet_list_to_ip_str(network_ID)}")
-# print(f"Gateway (1st usable):\t{octet_list_to_ip_str(gateway)}")
-# print(f"Last usable:\t\t{octet_list_to_ip_str(last_ip)}")
-# print(f"Broadcast:\t\t{octet_list_to_ip_str(broadcast)}")
-
-
