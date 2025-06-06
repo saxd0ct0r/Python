@@ -104,8 +104,6 @@ def display_ip_info(ip_string):
     print(f"Last usable:\t\t{octet_list_to_ip_str(last_ip)}")
     print(f"Broadcast:\t\t{octet_list_to_ip_str(broadcast)}")
 
-    return
-
 # Endless loop as main function, takes the IP/CIDR or X/x to exit
 # If there is a problem with the entry, displays error message with
 # info about how to correct it.
