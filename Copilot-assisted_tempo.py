@@ -2,9 +2,9 @@
 
 ## Python Implementation: Logarithmic Tempo Selection
 
-Below is a Python script that guides you through the tempo selection process using traditional metronome markings as logarithmic steps.
+# Below is a Python script that guides you through the tempo selection process using traditional metronome markings as logarithmic steps.
 
-```python
+
 # Traditional metronome markings (approximate logarithmic progression)
 METRONOME_MARKINGS = [
     40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 63, 66, 69, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108, 112, 116, 120,
@@ -72,7 +72,8 @@ def user_success_callback(bpm):
     return input().strip().lower() == 'y'
 
 # Uncomment to run:
-# tempo_selection(first_time=True, success_callback=user_success_callback)
-```
+first_try = True  # Set to False for subsequent practice
+tempo_selection(first_time=first_try, success_callback=user_success_callback)
 
-This script uses traditional metronome markings to approximate logarithmic tempo steps. The `success_callback` function should be implemented to interactively or programmatically determine if you were successful at each tempo.
+
+# This script uses traditional metronome markings to approximate logarithmic tempo steps. The `success_callback` function should be implemented to interactively or programmatically determine if you were successful at each tempo.
