@@ -1,33 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Customer Form</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
 <h1>Add Customer</h1>
 
 <form action="addrecord/" method="post">
-{% csrf_token %}
-First Name:<br>
-<input name="first">
-<br><br>
-Last Name:<br>
-<input name="last">
-<br><br>
-Middle Intial:<br>
-<input name="middle">
-<br><br>
-Email:<br>
-<input name="email">
-<br><br>
-Phone:<br>
-<input name="phone">
-<br><br>
-Avatar URL:<br>
-<input name="avatar">
-<br><br>
-<input type="submit" value="Submit">
+    {% csrf_token %}
+    First Name:<br>
+    <input name="first">
+    <br><br>
+    Last Name:<br>
+    <input name="last">
+    <br><br>
+    Middle Intial:<br>
+    <input name="middle">
+    <br><br>
+    Email:<br>
+    <input name="email">
+    <br><br>
+    Phone:<br>
+    <input name="phone">
+    <br><br>
+    Avatar URL:<br>
+    <input name="avatar">
+    <br><br>
+    <input type="submit" value="Submit">
 </form>
-</body>
-</html>
+
+{% endblock %}

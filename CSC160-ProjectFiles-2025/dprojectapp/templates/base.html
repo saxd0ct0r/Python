@@ -3,37 +3,49 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blue Dragon</title>
+    <title>Flying Panda</title>
+    <style>
+        body {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            max-width:1500px;
+            margin:25px;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/">DragonShop</a>
-    </div>
-</nav>
+    <img src="https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg" 
+        height="200">
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/">Shop Pandas</a> | 
+            <a class="navbar-brand" href="http://127.0.0.1:8000/customer">Customers List</a> |
+            <a class="navbar-brand" href="http://127.0.0.1:8000/add">New Customer</a>
+        </div>
+    </nav>
 
-<nav class="navbar bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/customer">Customers List</a>
-    </div>
-</nav>
+    <!-- <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/customer">Customers List</a>
+        </div>
+    </nav> -->
 
-<!--
-<nav class="navbar bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/dprojectapp/update">Update Customer Info</a>
+    <!--
+    <img src="https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg">
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/dprojectapp/update">Update Customer Info</a>
+        </div>
+    </nav>
+    -->
+    <!-- <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/add">New Customer</a>
+        </div>
+    </nav> -->
+    <div class="container"></div>
+        {% block content %}
+        {% endblock %}
     </div>
-</nav>
--->
-<nav class="navbar bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/add">New Customer</a>
     </div>
-</nav>
-<div class="container"></div>
-    {% block content %}
-    {% endblock %}
-</div>
-</div>
 </body>
 </html>
