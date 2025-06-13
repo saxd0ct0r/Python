@@ -10,6 +10,7 @@ TEMPOS = (30, 31.5, 33, 34.5, 36, 38, 40, 42,
           120, 126, 132, 138, 144, 152, 160, 168,
           176, 184, 192, 200, 208, 216, 224, 232,
           240)
+STEP_SIZES = (16, 8, 4, 2, 1, 1)
 '''
 TODO: write pseudocode for the flow of different use cases
 Case 1: Working on an exercise for the first time. Unknown tempo, no fixed 
@@ -34,5 +35,15 @@ fixed goal tempo.
 Purpose:
     1. Reinforce previous learning
     2. Detect imperfections in technique that may have crept in
+    3. Try for higher tempo to refine technique further
+Algorithm:
+    1. Start at previous tempo.
+        a. Play at previous tempo. Note success or failure
+        b. Automatically decrease tempo to half (-16 steps)
+        c. step size halves (step size is 8 steps)
+    2. Perform at new tempo.
+        a. If successful, increase tempo
+    
+
  
 '''
