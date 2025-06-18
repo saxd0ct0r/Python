@@ -28,11 +28,13 @@ for i in range(2 ** (len(STEP_SIZES))): # All the variants
         tempo = TEMPOS[tempo_index]
 
         tempo_increases = True if i & (2 ** ((len(STEP_SIZES) - 1) - step_size_index)) else False
+        # tempo_increases = True if input("Success? (y/n)").lower() in "yes" else False
         print(f"{tempo} {'/' if tempo_increases else '\\'}", end=" ")
         if tempo_increases:
             # for k in range(step_size_index, len(STEP_SIZES)):
             if tempo_index + step_size > len(TEMPOS) - 1:
                 # print("next tempo out of range--too high")
+                
                 break
 
             tempo_index += step_size
