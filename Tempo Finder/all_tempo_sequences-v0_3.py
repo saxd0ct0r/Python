@@ -59,7 +59,6 @@ while True:     # Main loop, keep running with user-selected starting tempo
             tempo = TEMPOS[tempo_index]
             step_size = STEP_SIZES[step_size_index]
 
-            # too_low = tempo_index - step_size < 0
             # Using binary mask to represent going up or down in tempo to
             # converge on target tempo.
             mask_for_step_sizes = 2 ** ((len(STEP_SIZES) - 1) - step_size_index)
@@ -67,33 +66,38 @@ while True:     # Main loop, keep running with user-selected starting tempo
             print(f"{tempo}", end=" ")
 
             if tempo_increases:
-                too_high = tempo_index + step_size > len(TEMPOS) - 1
-                while too_high or step_size_index < len(STEP_SIZES) - 1:
-                    step_size_index += 1
-                    step_size = STEP_SIZES[step_size_index]
-                    too_high = tempo_index + step_size > len(TEMPOS) - 1
-
                 if tempo == upper_bound:
-                    print("You've maxxed your tempo. Good job!")
+                    print("Max Out. Good job!")
                     maxxed = True
                     break
-                elif not too_high:
+
+                next_too_high = tempo_index + step_size > len(TEMPOS) - 1
+                while next_too_high and step_size_index < len(STEP_SIZES) - 1:
+                    step_size_index += 1
+                    step_size = STEP_SIZES[step_size_index]
+                    next_too_high = tempo_index + step_size > len(TEMPOS) - 1
+
+                if not next_too_high:
                     tempo_index += step_size
-                else:
-                    last_tempo = tempo
-        
+                        
             else:
                 perfect_run = False
                 if tempo == lower_bound:
-                    print("Try breaking things up.")
+                    print("Smaller chunks.")
                     break
-                elif not too_low:
+
+                next_too_low = tempo_index - step_size < 0
+                while next_too_low and step_size_index < len(STEP_SIZES) - 1:
+                    step_size_index += 1
+                    step_size = STEP_SIZES[step_size_index]
+                    next_too_low = tempo_index - step_size < 0
+
+                if not next_too_low:
                     tempo_index -= step_size
-                else:
-                    last_tempo = tempo
                     
-            if tempo != last_tempo:
-                print(f"{'S' if tempo_increases else 'F'}", end=" ")
+            step_size_index += 1
+                    
+            print(f"{'S' if tempo_increases else 'F'}", end=" ")
         
         tempo = TEMPOS[tempo_index]
 
