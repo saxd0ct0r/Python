@@ -14,7 +14,7 @@ repetitions instead of dozens.
 
 The scripts in this project folder help with that process. The "all_tempo_sequences" files demonstrate that the algorithm can hit all potential 
 tempos within a range of 1/4x to 4x of the starting tempo; the "tempo_finder_random" file simulates someone setting the metronome randomly and working
-through a difficult passage for the first time, or in other words, they have no idea what their ability holds, so the target is random. My next step is
+through a difficult passage for the first time, or in other words, they have no idea what their ability holds, so the target is unknown. My next step is
 to encapsulate the algorithm into a function or even a class that can be integrated into a web interface, so you can have the script take your starting
 tempo and reports of your subsequent successes or failures, and provide you with the next tempo to attempt. 
 
