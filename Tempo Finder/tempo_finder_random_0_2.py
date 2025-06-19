@@ -41,40 +41,39 @@ while True:     # Main loop, keep running with user-selected starting tempo
     lower_bound = TEMPOS[0]
     upper_bound = TEMPOS[-1]
 
-    # for i in range(2 ** (len(STEP_SIZES))): # All the variants
     tempo_index = start_tempo_index
     step_size_index = 0
 
     maxxed =  False
-    perfect_run = True
+    perfect_run = True      # Used to keep track of a string of all successes
     
-    while step_size_index < len(STEP_SIZES):
+    while step_size_index < len(STEP_SIZES):    # Limits number of repetitions
         tempo = TEMPOS[tempo_index]
         step_size = STEP_SIZES[step_size_index]
 
-        # Using binary mask to represent going up or down in tempo to
-        # converge on target tempo.
-        # mask_for_step_sizes = 2 ** ((len(STEP_SIZES) - 1) - step_size_index)
         tempo_increases = True if tempo <= target_tempo else False
         print(f"{tempo}", end=" ")
 
         if tempo_increases:
-            if tempo == upper_bound:
+            if tempo == upper_bound:    # You could go faster, but really?
                 print("Max Out. Good job!")
                 maxxed = True
                 break
 
+            # If the next increment in tempo goes "out of bounds", chop it in half
+            # until it will no longer take you "out of bounds"
             next_too_high = tempo_index + step_size > len(TEMPOS) - 1
             while next_too_high and step_size_index < len(STEP_SIZES) - 1:
                 step_size_index += 1
                 step_size = STEP_SIZES[step_size_index]
                 next_too_high = tempo_index + step_size > len(TEMPOS) - 1
 
-            if not next_too_high:
+            if not next_too_high:   # This if condition could probably go...
                 tempo_index += step_size
                     
         else:
-            perfect_run = False
+            perfect_run = False     # Oops! Made a mistake, so no longer perfect...
+            # The logic is parallel to what happens if the tempo increases as above.
             if tempo == lower_bound:
                 print("Smaller chunks.")
                 break
@@ -90,6 +89,7 @@ while True:     # Main loop, keep running with user-selected starting tempo
                 
         step_size_index += 1
                 
+        # indicates the simulated success/failure of the previous trail
         print(f"{'S' if tempo_increases else 'F'}", end=" ")
     
     tempo = TEMPOS[tempo_index]
@@ -98,9 +98,10 @@ while True:     # Main loop, keep running with user-selected starting tempo
         tempo = TEMPOS[tempo_index - 1]
 
     print(tempo)
+    # If it was a perfect run, you get one more shot that will end up potentially
+    # quadrupling the tempo.
     if perfect_run and not maxxed:
         tempo = TEMPOS[tempo_index]
         print(f"All successes. Try at {tempo}")
-    # tempo_index = TEMPOS.index(start_tempo)
 
 
