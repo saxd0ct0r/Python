@@ -25,7 +25,8 @@ def find_tempo(start_tempo = 60, initial_step_size_index = 0, start_perfect = Tr
     step_size_index = initial_step_size_index
     maxxed =  False
     perfect_run = start_perfect      # Used to keep track of a string of all successes
-    
+    tempo_increases = False
+
     while step_size_index < len(STEP_SIZES):    # Limits number of repetitions
         tempo = TEMPOS[tempo_index]
         step_size = STEP_SIZES[step_size_index]
@@ -92,13 +93,16 @@ def check_lower_bound(tempo_index, step_size_index):
 # Gets user input about success or failure at given tempo
 def check_success(tempo):
     success = None
-    user_input = input(f"Attempt at {tempo}bpm. Success? (y/n is default): ")
+    user_input = input(f"Attempt at {tempo}bpm. Success? (y/n; y is default): ")
 
     while success == None:
         if user_input.lower() == "y":
             success = True
-        else:
+        elif user_input.lower() == "n":
             success = False
+        else:
+            success = True  # default answer is 'y'; change to False for 'n'
+                            # or add prompt to give specific answer, no default
     
     return success
 
@@ -120,7 +124,6 @@ while True:     # Main loop, keep running until user chooses to exit
         if start_tempo == "":
             first_time = True
             break
-
         try:
             start_tempo = int(start_tempo)
             if start_tempo == 0:
@@ -143,19 +146,32 @@ while True:     # Main loop, keep running until user chooses to exit
             tempo_index += 1 if check_success(TEMPOS[tempo_index + 1]) else 0
         print(TEMPOS[tempo_index])
     else:
+        start_tempo_index = resolve_tempo(start_tempo)
+        start_tempo = TEMPOS[start_tempo_index]
+        tempo_index = start_tempo_index
         first_trial_success = check_success(start_tempo)
-        tempo_index = resolve_tempo(start_tempo)
+        print("Entering review phase ('slow' practice)")
         step_size_index = 0
         step_size_index, step_size = check_lower_bound(tempo_index, step_size_index)
-        tempo_index -= step_size
+        if tempo_index > 0:
+            tempo_index -= step_size
         step_size_index += 1
         tempo = TEMPOS[tempo_index]
         
         tempo_index, perfect_run = find_tempo(tempo, step_size_index, first_trial_success)
         if perfect_run:
-            if check_success(TEMPOS[tempo_index + 1]):
-                tempo_index += 1
-                
-                
+            print("Now entering growth phase ('fast' practice)")
+            step_size_index = 1
+            tempo_index = start_tempo_index
+            step_size_index, step_size = check_upper_bound(tempo_index,step_size_index)
+            if tempo_index < len(TEMPOS):
+                tempo_index += step_size
+            step_size_index += 1
+            tempo = TEMPOS[tempo_index]
 
-        print(TEMPOS[tempo_index])
+            tempo_index, another_perfect_run = find_tempo(tempo, step_size_index, perfect_run)
+            if another_perfect_run:
+                if check_success(TEMPOS[tempo_index + 1]):
+                    tempo_index += 1
+                
+        print(f"Final tempo: {TEMPOS[tempo_index]}bpm")
