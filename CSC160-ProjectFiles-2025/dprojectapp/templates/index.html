@@ -11,34 +11,35 @@
 
 </style>
 -->
-<style>
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: Green;
-  border-radius:15px;
-}
+<!-- <style>
+    /* .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: Green;
+        border-radius:15px;
+    } */
 
-.flex-container > div {
-  background-color: #f1f1f1;
-  width: 100px;
-  margin: 10px;
-  text-align: center;
-  line-height: 35px;
-  font-size: 30px;
-  border-radius:10px;
-}
-</style>
+    /* .flex-container > div {
+        background-color: #f1f1f1;
+        width: 100px;
+        text-align: center;
+        line-height: 35px;
+        font-size: 30px;
+        border-radius:10px;
+        color:black;
+    } */
+    
+</style> -->
 
 <div class="flex-container">
     {% for product in products %}
-    <div class="card" style="width: 27rem;">
+    <div class="card" style="width: 27rem;padding:2%">
 <!--        <img class="card-img-top" src="{{ product.image_url }}" alt="Card image cap" Style="width:95%"> -->
         <img class="card-img-top" src="{{ product.image_url }}" alt="Card image cap" Style="width:400px;height:400px;">
         <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">${{ product.price|floatformat:2|intcomma }}</p>
-            <a href="#" class="btn btn-primary">Add to Cart</a>
+            <a href="#" class="btn btn-primary" style="color:black">Add to Cart</a>
         </div>
     </div>
      {% endfor %}

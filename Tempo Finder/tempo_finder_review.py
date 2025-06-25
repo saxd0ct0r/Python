@@ -177,4 +177,4 @@ while True:     # Main loop, keep running until user chooses to exit
                 if check_success(TEMPOS[tempo_index + 1]):
                     tempo_index += 1
                 
-        print(f"Final tempo: {TEMPOS[tempo_index]}bpm")
+    print(f"Final tempo: {TEMPOS[tempo_index]}bpm")

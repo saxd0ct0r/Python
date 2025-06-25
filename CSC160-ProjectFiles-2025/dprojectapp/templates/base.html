@@ -3,27 +3,115 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flying Panda</title>
+    <title>Shop Flying Panda</title>
+    <!-- <link rel="stylesheet" href="css/pandastyle.css"> -->
     <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg">
  
     <style>
-        body {
+        * {
+            /* background-image:url(https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg); */
             font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            max-width:1500px;
-            margin:25px;
+            /* max-width:1800px; */
+            margin:auto;
+            /* color:white; */
+            /* text-align: center; */
+        }
+
+        body {
+            background-color: white;
+            background-image:url(https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg);
+            color:brown;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height:300%;
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+                        url('https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg');
+            background-size: contain;
+            background-repeat: repeat;
+            filter: brightness(1.2) contrast(0.8);
+            opacity: 1;
+            z-index: -1;
+        }
+
+        header {
+            width:100%;
+            border:10px;
+            font-size:x-large;
+            margin:auto;
+            text-align:center;
+            color:rgb(173, 189, 149);
+
+        }
+
+        a:any-link {
+            color:rgb(173, 189, 149);
+        }
+        
+        h1 {
+            font-size: xx-large;
+            text-align: center;
+            color:brown;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* background-color: Green; */
+            border-radius:15px;
+            margin:2.5%;
+            margin-top:0;
+            padding:2.5%;
+        }
+
+        .flex-container > div {
+            background-color: #f1f1f1;
+            width: 100px;
+            text-align: center;
+            line-height: 35px;
+            font-size: 30px;
+            border-radius:10px;
+            margin-top:2%;
+            margin-bottom:2%;
+            /* color:black; */
+        }
+
+        .card {
+            width: 27rem;
+            padding:2%
+        }
+        nav {
+            width:50%;
+            background-color:brown;
+            color:rgb(173, 189, 149);
+            margin:auto;
+            padding:20px;
+            border-radius:20px;
+        }
+
+        nav.a:any-link {
+            color:rgb(173, 189, 149);
         }
     </style>
 </head>
 <body>
-    <img src="https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg" 
-        height="200">
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/">Shop Pandas</a> | 
-            <a class="navbar-brand" href="http://127.0.0.1:8000/customer">Customers List</a> |
-            <a class="navbar-brand" href="http://127.0.0.1:8000/add">New Customer</a>
-        </div>
-    </nav>
+    <header>
+        <img src="https://i.pinimg.com/736x/85/75/26/85752698607bd60b4cab562c4b38d842.jpg" 
+            height="300" style="margin:10px;border:10px solid brown;
+            border-radius:15px;">
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="http://127.0.0.1:8000/">Shop Pandas</a> | 
+                <a class="navbar-brand" href="http://127.0.0.1:8000/customer">Customers List</a> |
+                <a class="navbar-brand" href="http://127.0.0.1:8000/add">New Customer</a>
+            </div>
+        </nav>
+    </header>
 
     <!-- <nav class="navbar bg-light">
         <div class="container-fluid">
@@ -44,7 +132,7 @@
             <a class="navbar-brand" href="http://127.0.0.1:8000/add">New Customer</a>
         </div>
     </nav> -->
-    <div class="container"></div>
+    <!-- <div class="container" style="margin:auto"></div> -->
         {% block content %}
         {% endblock %}
     </div>
