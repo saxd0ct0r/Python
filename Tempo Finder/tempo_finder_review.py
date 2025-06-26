@@ -144,7 +144,7 @@ while True:     # Main loop, keep running until user chooses to exit
         tempo_index, perfect_run = find_tempo()
         if perfect_run:
             tempo_index += 1 if check_success(TEMPOS[tempo_index + 1]) else 0
-        print(TEMPOS[tempo_index])
+        # print(TEMPOS[tempo_index])
     else:
         start_tempo_index = resolve_tempo(start_tempo)
         start_tempo = TEMPOS[start_tempo_index]
@@ -163,15 +163,18 @@ while True:     # Main loop, keep running until user chooses to exit
             print("Now entering growth phase ('fast' practice)")
             step_size_index = 1
             tempo_index = start_tempo_index
-            step_size_index, step_size = check_upper_bound(tempo_index, step_size_index)
+            tempo = TEMPOS[tempo_index]
+            growth_phase_start_success = check_success(tempo)
+            step_size_index, step_size = check_upper_bound(tempo_index,step_size_index)
             if tempo_index < len(TEMPOS):
                 tempo_index += step_size
             step_size_index += 1
             tempo = TEMPOS[tempo_index]
 
-            tempo_index, another_perfect_run = find_tempo(tempo, step_size_index, perfect_run)
+            tempo_index, another_perfect_run = find_tempo(
+                tempo, step_size_index, growth_phase_start_success)
             if another_perfect_run:
                 if check_success(TEMPOS[tempo_index + 1]):
                     tempo_index += 1
                 
-        print(f"Final tempo: {TEMPOS[tempo_index]}bpm")
+    print(f"Final tempo: {TEMPOS[tempo_index]}bpm")
