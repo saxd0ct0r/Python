@@ -163,7 +163,7 @@ while True:     # Main loop, keep running until user chooses to exit
             print("Now entering growth phase ('fast' practice)")
             step_size_index = 1
             tempo_index = start_tempo_index
-            step_size_index, step_size = check_upper_bound(tempo_index,step_size_index)
+            step_size_index, step_size = check_upper_bound(tempo_index, step_size_index)
             if tempo_index < len(TEMPOS):
                 tempo_index += step_size
             step_size_index += 1
