@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Customers</h1>
+<h1>Panda Lovers</h1>
 
 <!-- <style>
     .flex-container {
@@ -29,14 +29,14 @@
         <div class="card-body">
             <h3 class="card-title">{{customer.id}} {{ customer.fname}} {{customer.lname }}</h3>
             <p class="card-text">
-                {{ customer.email }}
+                {{ customer.email }}<br>
                 {{ customer.phone }}
             </p>
             <a href="/update/{{ customer.id }}">Update Customer Info</a>
             <br></br>
             <a href="/delete/{{ customer.id }}">Delete Customer</a>
             <br></br>
-            <a href="http://127.0.0.1:8000/" class="btn btn-primary">CLOSE</a>
+            <a href="http://127.0.0.1:8000/" class="btn btn-primary" style="color:black;">CLOSE</a>
         </div>
     </div>
      {% endfor %}
