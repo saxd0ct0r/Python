@@ -1,0 +1,20 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Print Hello World
+    ansible.builtin.debug:
+      msg: "Hello, World!"
+  - name: Update all packages to their latest version
+    apt:
+      name: "*"
+      state: latest
+  - name: Install Apache2
+    apt:
+      name: apache2
+      update_cache: yes
+      state: present
+  - name: Ensure Git is installed
+    apt:
+      name: git
+      update_cache: yes
+      state: present
