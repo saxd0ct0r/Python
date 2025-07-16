@@ -1,6 +1,32 @@
 # Timothy Owen
-# 23 June 2025
-# version 0.2
+# 15 July 2025
+'''Tempo Trainer has two modes, targeted and untargeted. The untargeted mode is
+intended for exercises and passages do not have a goal tempo. Scales, for
+example, can be performed at an arbitrarily high tempo, limited only by the
+user's present ability. For a first exposure, Tempo Trainer helps to identify
+the tempo quickly using a divide-and-conquer approach. Starting at 60 bpm, the
+user gives feedback on the performance success, and the tempo either halves or
+doubles; each subsequent performance changes by smaller increments until there
+is no noticeable difference. On subsequent exposures, the user starts at the
+tempo achieved on the last exposure. After the first performance on the current
+iteration, the Trainer takes the user through a review cycle. If the review
+cycle confirms the user can still perform at the previous level with no issues,
+the Trainer then guides the user through a challenge cycle to try for a tempo
+as double the previously achieved tempo.
+
+The targeted mode is intended for exercises and passages with a pre-defined
+goal tempo such as a tempo marking. The Trainer begins with a tempo about 20%
+above the goal. The user begins at that tempo until the first error, at which
+point the Trainer begins using the tempo finder search pattern. If the user
+completes the passage at the slower tempo, they go back to the last error and
+attempts at a faster tempo. At the end, the user knows the most challenging
+part of the passage and the tempo at which they can perform it. Further work
+can be done by a) isolating the "hot spot" for special analysis and treatment,
+and b) subjecting the parts before and after the "hot spot" to the same
+training routine until there are no more "hot spots" to be found. Some pieces
+will be very simple, while more substantial works, may have many levels of "hot
+spots". The management of the "hot spots" and other passages is outside the
+scope of this tool.'''
 
 # define preset tempos and step sizes in a tuple so they don't get changed
 # by accident
@@ -115,7 +141,7 @@ def resolve_tempo(tempo):
             if real_tempo < tempo:
                 return TEMPOS.index(real_tempo)
 
-#  
+#  This main loop encapsulates the untargeted application of the algorithm.
 while True:     # Main loop, keep running until user chooses to exit
     while True: # repeat until valid input
         first_time = False
