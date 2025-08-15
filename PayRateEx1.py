@@ -26,4 +26,5 @@ else:
     ot_hrs = 0
 
 pay = hours * rate + (ot_hrs * rate * ot_multiplyer)
-print(f"\nPay: ${pay:,.2f}")
+print(f"\nWeekly Pay: ${pay:,.2f}")
+print(f"Annual Pay: ${pay * 48:,.2f}")
