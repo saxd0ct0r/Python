@@ -1,33 +1,44 @@
 import csv
 import sys
 
-def consolidate_csvs(output_path, input_paths):
-    if not input_paths:
+def consolidate_csv(output_file, input_files):
+    """
+    Consolidates multiple CSV files with the same schema into a single output CSV file.
+    The header from the first input file is used, and headers from subsequent files are skipped.
+    """
+    if not input_files:
         print("No input files provided.")
         return
 
-    with open(output_path, 'w', newline='') as output_file:
-        writer = csv.writer(output_file)
-
-        for i, input_path in enumerate(input_paths):
-            with open(input_path, 'r', newline='') as input_file:
-                reader = csv.reader(input_file)
-                if i == 0:
-                    # Write header and all rows from first file
-                    for row in reader:
-                        writer.writerow(row)
-                else:
-                    # Skip header for subsequent files
-                    next(reader, None)  # Skip the header row
-                    for row in reader:
-                        writer.writerow(row)
+    with open(output_file, 'w', newline='') as outf:
+        writer = csv.writer(outf)
+        
+        for i, infile in enumerate(input_files):
+            try:
+                with open(infile, 'r', newline='') as inf:
+                    reader = csv.reader(inf)
+                    
+                    if i == 0:
+                        # Write all rows including header
+                        for row in reader:
+                            writer.writerow(row)
+                    else:
+                        # Skip header
+                        next(reader, None)
+                        for row in reader:
+                            writer.writerow(row)
+            except FileNotFoundError:
+                print(f"File not found: {infile}")
+            except csv.Error as e:
+                print(f"CSV error in file {infile}: {e}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("Usage: python consolidate_csv.py output.csv input1.csv input2.csv ...")
+        print("Usage: python consolidate.py <output.csv> <input1.csv> <input2.csv> ...")
         sys.exit(1)
-
-    output_path = sys.argv[1]
-    input_paths = sys.argv[2:]
-    consolidate_csvs(output_path, input_paths)
-    print(f"Consolidated CSV saved to {output_path}")
+    
+    output_file = sys.argv[1]
+    input_files = sys.argv[2:]
+    
+    consolidate_csv(output_file, input_files)
+    print(f"Consolidated CSV written to {output_file}")
